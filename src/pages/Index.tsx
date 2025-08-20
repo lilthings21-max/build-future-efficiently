@@ -30,8 +30,16 @@ const Index = () => {
       </header>
 
       {/* Hero Section */}
-      <section id="accueil" className="relative h-screen flex items-center justify-center bg-gradient-to-r from-primary/20 to-secondary/30">
-        <div className="absolute inset-0 bg-black/40"></div>
+      <section id="accueil" className="relative h-screen flex items-center justify-center">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/lovable-uploads/6f06b044-aa63-4148-898a-06d318d24289.png')`,
+            filter: 'blur(2px)',
+            opacity: 0.7
+          }}
+        ></div>
+        <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center text-white px-6">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Construisons ensemble l'avenir, durable et efficace.
