@@ -10,7 +10,13 @@ const Index = () => {
       {/* Header */}
       <header className="bg-background border-b border-border px-6 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="text-2xl font-bold text-primary">Efficace Bâti</div>
+          <div className="flex items-center">
+            <img 
+              src="/lovable-uploads/6e762eb5-7043-4252-8ef6-0b456e481337.png" 
+              alt="Efficace Bâti Logo" 
+              className="h-12 w-auto"
+            />
+          </div>
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#accueil" className="text-foreground hover:text-primary transition-colors">Accueil</a>
             <a href="#activites" className="text-foreground hover:text-primary transition-colors">Nos Activités</a>
