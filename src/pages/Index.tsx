@@ -12,7 +12,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/6e762eb5-7043-4252-8ef6-0b456e481337.png" 
+              src="/lovable-uploads/a71b6835-bdb9-445b-af43-6b267b86e960.png" 
               alt="Efficace Bâti Logo" 
               className="h-16 w-auto"
             />
