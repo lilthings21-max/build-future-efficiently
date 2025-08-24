@@ -2,16 +2,29 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, ArrowUp } from "lucide-react";
+import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, ArrowUp, Heart, Shield, Home, Zap, FileText, ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Index = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [activeSection, setActiveSection] = useState('consequences');
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       setShowScrollTop(scrollTop > 300);
+
+      // Detect active section
+      const sections = ['consequences', 'expertise', 'projets', 'formulaire', 'publications'];
+      const sectionElements = sections.map(id => document.getElementById(id));
+      
+      for (let i = sectionElements.length - 1; i >= 0; i--) {
+        const section = sectionElements[i];
+        if (section && scrollTop >= section.offsetTop - 100) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -24,32 +37,66 @@ const Index = () => {
       behavior: 'smooth'
     });
   };
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-background border-b border-border px-6 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center">
-            <img 
-              src="/lovable-uploads/a71b6835-bdb9-445b-af43-6b267b86e960.png" 
-              alt="Efficace Bâti Logo" 
-              className="h-16 w-auto"
-            />
-          </div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#accueil" className="text-foreground hover:text-primary transition-colors">Accueil</a>
-            <a href="#activites" className="text-foreground hover:text-primary transition-colors">Nos Activités</a>
-            <a href="#savoir-faire" className="text-foreground hover:text-primary transition-colors">Savoir-faire</a>
-            <a href="#contact" className="text-foreground hover:text-primary transition-colors">Nous Contacter</a>
-          </nav>
-          <Button size="sm" className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
-            Demander un devis
-          </Button>
-        </div>
-      </header>
+      {/* Logo Section */}
+      <div className="bg-background py-8 text-center border-b border-border">
+        <img 
+          src="/lovable-uploads/a71b6835-bdb9-445b-af43-6b267b86e960.png" 
+          alt="Efficace Bâti Logo" 
+          className="h-20 w-auto mx-auto"
+        />
+      </div>
 
-      {/* Hero Section */}
-      <section id="accueil" className="relative h-screen flex items-center justify-center">
+      {/* Sticky Navigation */}
+      <nav className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-center space-x-8 flex-wrap">
+            <button 
+              onClick={() => scrollToSection('consequences')}
+              className={`transition-colors ${activeSection === 'consequences' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+            >
+              Les conséquences du Pont Thermiques sur la santé
+            </button>
+            <button 
+              onClick={() => scrollToSection('expertise')}
+              className={`transition-colors ${activeSection === 'expertise' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+            >
+              Notre expertise: quelques approches pour éviter le Pont thermique
+            </button>
+            <div className="relative group">
+              <button 
+                onClick={() => scrollToSection('projets')}
+                className={`transition-colors ${activeSection === 'projets' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              >
+                Votre projet
+              </button>
+            </div>
+            <button 
+              onClick={() => scrollToSection('formulaire')}
+              className={`transition-colors ${activeSection === 'formulaire' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+            >
+              Formulaire de renseignements
+            </button>
+            <button 
+              onClick={() => scrollToSection('publications')}
+              className={`transition-colors ${activeSection === 'publications' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+            >
+              Publications
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section with Background */}
+      <section className="relative h-screen flex items-center justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -66,112 +113,53 @@ const Index = () => {
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90">
             Spécialistes en construction, rénovation et performance énergétique des bâtiments.
           </p>
-          <Button size="lg" className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
-            En savoir plus
-          </Button>
-        </div>
-      </section>
-
-      {/* Présentation rapide */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-muted rounded-lg p-8 h-80 flex items-center justify-center">
-              <Building size={120} className="text-primary" />
-            </div>
-            <div>
-              <p className="text-lg text-muted-foreground mb-6">
-                Efficace Bâti est une entreprise marocaine de construction et rénovation, 
-                spécialisée dans l'efficacité énergétique et la durabilité.
-              </p>
-              <h3 className="text-xl font-semibold mb-4">Nos objectifs :</h3>
-              <ul className="space-y-3 text-muted-foreground">
-                <li>• Réaliser des projets respectueux des standards européens de performance.</li>
-                <li>• Promouvoir l'utilisation des énergies renouvelables et des matériaux innovants.</li>
-                <li>• Optimiser l'usage de l'eau et de l'énergie dans le bâtiment.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Mini CTA */}
-      <section className="py-16 bg-muted">
-        <div className="max-w-4xl mx-auto text-center px-6">
-          <h2 className="text-3xl font-bold mb-6">Vous avez un projet de construction ou rénovation ?</h2>
-          <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
+          <Button 
+            size="lg" 
+            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            onClick={() => scrollToSection('formulaire')}
+          >
             Contactez-nous
           </Button>
         </div>
       </section>
 
-      {/* Nos Activités */}
-      <section id="activites" className="py-20 px-6">
+      {/* Section: Les conséquences du Pont Thermiques sur la santé */}
+      <section id="consequences" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Nos Activités</h2>
+            <h2 className="text-4xl font-bold mb-6">Les conséquences du Pont Thermiques sur la santé</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Nous couvrons l'ensemble des métiers du bâtiment et des énergies durables.
+              Les ponts thermiques représentent un danger silencieux pour votre santé et votre confort.
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="p-6 text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
-                <Building className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Construction et rénovation</h3>
+                <Heart className="w-16 h-16 text-destructive mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Problèmes respiratoires</h3>
                 <p className="text-muted-foreground">
-                  Travaux de construction de bâtiments modernes et durables.
+                  L'humidité causée par les ponts thermiques favorise le développement de moisissures et d'allergènes.
                 </p>
               </CardContent>
             </Card>
             
             <Card className="p-6 text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
-                <Lightbulb className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Efficacité énergétique</h3>
+                <Zap className="w-16 h-16 text-destructive mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Inconfort thermique</h3>
                 <p className="text-muted-foreground">
-                  Isolation thermique, étanchéité, chauffage, climatisation et ventilation.
+                  Les variations de température créent des zones froides et chaudes, affectant le bien-être.
                 </p>
               </CardContent>
             </Card>
             
             <Card className="p-6 text-center hover:shadow-lg transition-shadow">
               <CardContent className="pt-6">
-                <Sun className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Énergies renouvelables</h3>
+                <Shield className="w-16 h-16 text-destructive mx-auto mb-4" />
+                <h3 className="text-xl font-semibold mb-3">Dégradation du bâti</h3>
                 <p className="text-muted-foreground">
-                  Installation d'équipements solaires et photovoltaïques.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <Wrench className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Second œuvre</h3>
-                <p className="text-muted-foreground">
-                  Électricité, plomberie, menuiserie bois/PVC/aluminium, peinture, carrelage, finitions.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <Users className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Études et assistance</h3>
-                <p className="text-muted-foreground">
-                  Conseil technique, conception de projets conformes aux standards européens.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <Hammer className="w-16 h-16 text-primary mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Travaux publics</h3>
-                <p className="text-muted-foreground">
-                  Voirie, assainissement et génie civil.
+                  La condensation endommage les structures et réduit la durabilité du bâtiment.
                 </p>
               </CardContent>
             </Card>
@@ -179,41 +167,108 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Savoir-faire */}
-      <section id="savoir-faire" className="py-20 px-6 bg-muted">
+      {/* Section: Notre expertise */}
+      <section id="expertise" className="py-20 px-6 bg-muted">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Notre Savoir-faire</h2>
+            <h2 className="text-4xl font-bold mb-6">Notre expertise: quelques approches pour éviter le Pont thermique</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Des solutions techniques éprouvées pour éliminer les ponts thermiques.
+            </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div className="bg-background rounded-lg p-8 h-80 flex items-center justify-center">
-              <Users size={120} className="text-primary" />
+              <Building size={120} className="text-primary" />
             </div>
             <div>
-              <p className="text-lg text-muted-foreground mb-6">
-                Fort de son expertise, Efficace Bâti accompagne ses clients à chaque étape de leurs projets.
-              </p>
-              <h3 className="text-xl font-semibold mb-4">Nos engagements :</h3>
-              <ul className="space-y-3 text-muted-foreground mb-8">
-                <li>• Respect des normes européennes en efficacité énergétique.</li>
-                <li>• Intégration de solutions innovantes et durables.</li>
-                <li>• Réalisation clé en main, depuis l'étude jusqu'à la finition.</li>
-                <li>• Une équipe pluridisciplinaire alliant expérience et innovation.</li>
+              <h3 className="text-2xl font-semibold mb-6">Nos techniques d'intervention :</h3>
+              <ul className="space-y-4 text-muted-foreground">
+                <li className="flex items-start">
+                  <Shield className="w-5 h-5 text-primary mr-3 mt-1" />
+                  <span>Isolation thermique par l'extérieur (ITE) pour envelopper complètement le bâtiment</span>
+                </li>
+                <li className="flex items-start">
+                  <Shield className="w-5 h-5 text-primary mr-3 mt-1" />
+                  <span>Rupteurs de ponts thermiques aux jonctions critiques</span>
+                </li>
+                <li className="flex items-start">
+                  <Shield className="w-5 h-5 text-primary mr-3 mt-1" />
+                  <span>Étanchéité à l'air pour éviter les infiltrations</span>
+                </li>
+                <li className="flex items-start">
+                  <Shield className="w-5 h-5 text-primary mr-3 mt-1" />
+                  <span>Choix de matériaux performants et durables</span>
+                </li>
               </ul>
-              <blockquote className="text-xl font-medium text-primary italic">
-                "Notre savoir-faire, votre garantie de qualité et de performance."
-              </blockquote>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Nous Contacter */}
-      <section id="contact" className="py-20 px-6">
+      {/* Section: Votre projet */}
+      <section id="projets" className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Votre projet</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Que ce soit pour une nouvelle construction ou une rénovation énergétique, nous vous accompagnons.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="p-8 text-center hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <Home className="w-20 h-20 text-primary mx-auto mb-6" />
+                <h3 className="text-2xl font-semibold mb-4">Nouvelle construction</h3>
+                <p className="text-muted-foreground mb-6">
+                  Conception et réalisation de bâtiments neufs respectant les plus hauts standards d'efficacité énergétique.
+                </p>
+                <ul className="text-left space-y-2 text-muted-foreground mb-6">
+                  <li>• Étude thermique complète</li>
+                  <li>• Conception sans ponts thermiques</li>
+                  <li>• Matériaux haute performance</li>
+                  <li>• Certification énergétique</li>
+                </ul>
+                <Button 
+                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                  onClick={() => scrollToSection('formulaire')}
+                >
+                  Discuter de mon projet
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="p-8 text-center hover:shadow-lg transition-shadow">
+              <CardContent className="pt-6">
+                <Wrench className="w-20 h-20 text-primary mx-auto mb-6" />
+                <h3 className="text-2xl font-semibold mb-4">Rénovation énergétique</h3>
+                <p className="text-muted-foreground mb-6">
+                  Amélioration de l'existant avec traitement spécifique des ponts thermiques et amélioration de la performance.
+                </p>
+                <ul className="text-left space-y-2 text-muted-foreground mb-6">
+                  <li>• Diagnostic thermique détaillé</li>
+                  <li>• Isolation performante</li>
+                  <li>• Traitement des ponts thermiques</li>
+                  <li>• Amélioration du confort</li>
+                </ul>
+                <Button 
+                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                  onClick={() => scrollToSection('formulaire')}
+                >
+                  Rénover mon bâtiment
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: Formulaire de renseignements */}
+      <section id="formulaire" className="py-20 px-6 bg-muted">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4">Nous contacter</h2>
+            <h2 className="text-4xl font-bold mb-4">Formulaire de renseignements</h2>
             <p className="text-xl text-muted-foreground">
               Parlez-nous de votre projet, nous vous répondrons rapidement.
             </p>
@@ -234,6 +289,16 @@ const Index = () => {
               <div>
                 <label className="block text-sm font-medium mb-2">Téléphone</label>
                 <Input type="tel" placeholder="+212 XXX-XXXXXX" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">Type de projet</label>
+                <select className="w-full p-3 border border-border rounded-md bg-background">
+                  <option value="">Sélectionnez votre type de projet</option>
+                  <option value="nouvelle-construction">Nouvelle construction</option>
+                  <option value="renovation">Rénovation énergétique</option>
+                  <option value="diagnostic">Diagnostic thermique</option>
+                  <option value="autre">Autre</option>
+                </select>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">Votre projet / Message</label>
@@ -269,6 +334,92 @@ const Index = () => {
               <h3 className="font-semibold mb-2">Email</h3>
               <p className="text-muted-foreground">said.harouchi@efficacebati.com</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section: Publications */}
+      <section id="publications" className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Publications</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Découvrez nos ressources et publications spécialisées sur l'efficacité énergétique.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card className="hover:shadow-lg transition-shadow cursor-pointer group">
+              <div className="aspect-video bg-muted flex items-center justify-center">
+                <FileText className="w-16 h-16 text-primary" />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
+                  Guide des Ponts Thermiques
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Comprendre et identifier les ponts thermiques dans votre bâtiment pour améliorer son efficacité.
+                </p>
+                <div className="flex items-center text-primary text-sm">
+                  <span>Lire la suite</span>
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow cursor-pointer group">
+              <div className="aspect-video bg-muted flex items-center justify-center">
+                <Lightbulb className="w-16 h-16 text-primary" />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
+                  Isolation Thermique Efficace
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Les meilleures techniques d'isolation pour éliminer les déperditions énergétiques.
+                </p>
+                <div className="flex items-center text-primary text-sm">
+                  <span>Lire la suite</span>
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow cursor-pointer group">
+              <div className="aspect-video bg-muted flex items-center justify-center">
+                <Sun className="w-16 h-16 text-primary" />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
+                  Énergies Renouvelables
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Intégrer les énergies renouvelables dans votre projet de construction ou rénovation.
+                </p>
+                <div className="flex items-center text-primary text-sm">
+                  <span>Lire la suite</span>
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow cursor-pointer group">
+              <div className="aspect-video bg-muted flex items-center justify-center">
+                <Building className="w-16 h-16 text-primary" />
+              </div>
+              <CardContent className="p-6">
+                <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
+                  Standards Européens
+                </h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Respecter les normes européennes d'efficacité énergétique dans vos projets au Maroc.
+                </p>
+                <div className="flex items-center text-primary text-sm">
+                  <span>Lire la suite</span>
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
