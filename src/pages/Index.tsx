@@ -2,12 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, ArrowUp, Heart, Shield, Home, Zap, FileText, ExternalLink } from "lucide-react";
+import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, ArrowUp, Heart, Shield, Home, Zap, FileText, ExternalLink, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const Index = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState('consequences');
+  const [showProjectDropdown, setShowProjectDropdown] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,38 +57,101 @@ const Index = () => {
       </div>
 
       {/* Sticky Navigation */}
-      <nav className="sticky top-0 z-40 bg-background/95 backdrop-blur-sm border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-center space-x-8 flex-wrap">
+      <nav className="sticky top-0 z-50 bg-gradient-to-r from-background/95 to-background/90 backdrop-blur-md border-b-2 border-primary/20 shadow-lg">
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <div className="flex items-center justify-center space-x-6 lg:space-x-12 flex-wrap">
             <button 
               onClick={() => scrollToSection('consequences')}
-              className={`transition-colors ${activeSection === 'consequences' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                activeSection === 'consequences' 
+                  ? 'text-yellow-600 bg-yellow-50 shadow-md border border-yellow-200 font-bold' 
+                  : 'text-foreground hover:text-yellow-600 hover:bg-yellow-50/50 hover:shadow-sm'
+              }`}
             >
-              Les conséquences du Pont Thermiques sur la santé
+              Conséquences des Ponts Thermiques
             </button>
+            
             <button 
               onClick={() => scrollToSection('expertise')}
-              className={`transition-colors ${activeSection === 'expertise' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                activeSection === 'expertise' 
+                  ? 'text-yellow-600 bg-yellow-50 shadow-md border border-yellow-200 font-bold' 
+                  : 'text-foreground hover:text-yellow-600 hover:bg-yellow-50/50 hover:shadow-sm'
+              }`}
             >
-              Notre expertise: quelques approches pour éviter le Pont thermique
+              Notre Expertise
             </button>
-            <div className="relative group">
+            
+            <div className="relative">
               <button 
-                onClick={() => scrollToSection('projets')}
-                className={`transition-colors ${activeSection === 'projets' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+                onClick={() => setShowProjectDropdown(!showProjectDropdown)}
+                onMouseEnter={() => setShowProjectDropdown(true)}
+                className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 flex items-center gap-2 ${
+                  activeSection === 'projets' 
+                    ? 'text-yellow-600 bg-yellow-50 shadow-md border border-yellow-200 font-bold' 
+                    : 'text-foreground hover:text-yellow-600 hover:bg-yellow-50/50 hover:shadow-sm'
+                }`}
               >
-                Votre projet
+                Votre Projet
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${showProjectDropdown ? 'rotate-180' : ''}`} />
               </button>
+              
+              {/* Dropdown Menu */}
+              {showProjectDropdown && (
+                <div 
+                  className="absolute top-full left-0 mt-2 w-72 bg-white border border-gray-200 rounded-lg shadow-xl z-60 overflow-hidden"
+                  onMouseLeave={() => setShowProjectDropdown(false)}
+                >
+                  <div className="py-2">
+                    <button
+                      onClick={() => {
+                        scrollToSection('projets');
+                        setShowProjectDropdown(false);
+                      }}
+                      className="w-full text-left px-4 py-3 hover:bg-yellow-50 transition-colors duration-200 flex items-center gap-3"
+                    >
+                      <Home className="w-5 h-5 text-primary" />
+                      <div>
+                        <div className="font-semibold text-foreground">Nouvelle Construction</div>
+                        <div className="text-sm text-muted-foreground">Bâtiments neufs performants</div>
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => {
+                        scrollToSection('projets');
+                        setShowProjectDropdown(false);
+                      }}
+                      className="w-full text-left px-4 py-3 hover:bg-yellow-50 transition-colors duration-200 flex items-center gap-3 border-t border-gray-100"
+                    >
+                      <Wrench className="w-5 h-5 text-primary" />
+                      <div>
+                        <div className="font-semibold text-foreground">Rénovation Énergétique</div>
+                        <div className="text-sm text-muted-foreground">Amélioration de l'existant</div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
+            
             <button 
               onClick={() => scrollToSection('formulaire')}
-              className={`transition-colors ${activeSection === 'formulaire' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                activeSection === 'formulaire' 
+                  ? 'text-yellow-600 bg-yellow-50 shadow-md border border-yellow-200 font-bold' 
+                  : 'text-foreground hover:text-yellow-600 hover:bg-yellow-50/50 hover:shadow-sm'
+              }`}
             >
-              Formulaire de renseignements
+              Contact
             </button>
+            
             <button 
               onClick={() => scrollToSection('publications')}
-              className={`transition-colors ${activeSection === 'publications' ? 'text-primary font-semibold' : 'text-foreground hover:text-primary'}`}
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                activeSection === 'publications' 
+                  ? 'text-yellow-600 bg-yellow-50 shadow-md border border-yellow-200 font-bold' 
+                  : 'text-foreground hover:text-yellow-600 hover:bg-yellow-50/50 hover:shadow-sm'
+              }`}
             >
               Publications
             </button>
