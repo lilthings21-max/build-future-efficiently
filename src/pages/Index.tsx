@@ -191,42 +191,44 @@ const Index = () => {
       <section id="consequences" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Les conséquences du Pont Thermiques sur la santé</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Les ponts thermiques représentent un danger silencieux pour votre santé et votre confort.
-            </p>
+            <h2 className="text-4xl font-bold mb-6 flex items-center justify-center gap-3">
+              <Home className="w-10 h-10 text-primary" />
+              Condensation et moisissures : un enjeu sanitaire et énergétique
+            </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <Heart className="w-16 h-16 text-destructive mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Problèmes respiratoires</h3>
-                <p className="text-muted-foreground">
-                  L'humidité causée par les ponts thermiques favorise le développement de moisissures et d'allergènes.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <Zap className="w-16 h-16 text-destructive mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Inconfort thermique</h3>
-                <p className="text-muted-foreground">
-                  Les variations de température créent des zones froides et chaudes, affectant le bien-être.
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <Shield className="w-16 h-16 text-destructive mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-3">Dégradation du bâti</h3>
-                <p className="text-muted-foreground">
-                  La condensation endommage les structures et réduit la durabilité du bâtiment.
-                </p>
-              </CardContent>
-            </Card>
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="bg-background rounded-lg p-8 shadow-md">
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                La condensation et les moisissures ne sont pas de simples désagréments visuels. Elles constituent un risque réel pour la santé, favorisant l'apparition de maladies respiratoires telles que l'asthme, en particulier chez les enfants et les personnes âgées.
+              </p>
+              <p className="text-lg text-muted-foreground leading-relaxed mt-4">
+                Ces problèmes sont souvent causés par une isolation thermique défaillante, générant des ponts thermiques.
+              </p>
+            </div>
+
+            <div className="bg-orange-50 border-l-4 border-orange-400 rounded-lg p-8">
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-orange-800">
+                <Shield className="w-8 h-8" />
+                Les ponts thermiques : deux conséquences majeures
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="flex items-start gap-3">
+                  <Heart className="w-6 h-6 text-red-500 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-orange-800">Sanitaires :</h4>
+                    <p className="text-orange-700">Favorisent l'humidité et les moisissures.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Zap className="w-6 h-6 text-yellow-500 mt-1" />
+                  <div>
+                    <h4 className="font-semibold text-orange-800">Énergétiques :</h4>
+                    <p className="text-orange-700">Provoquent des pertes de chaleur, augmentent les coûts de chauffage et diminuent le confort intérieur.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -235,36 +237,91 @@ const Index = () => {
       <section id="expertise" className="py-20 px-6 bg-muted">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Notre expertise: quelques approches pour éviter le Pont thermique</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Des solutions techniques éprouvées pour éliminer les ponts thermiques.
-            </p>
+            <h2 className="text-4xl font-bold mb-6 flex items-center justify-center gap-3">
+              <Wrench className="w-10 h-10 text-primary" />
+              Notre solution : une isolation thermique performante par l'extérieur
+            </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div className="bg-background rounded-lg p-8 h-80 flex items-center justify-center">
-              <Building size={120} className="text-primary" />
+          <div className="max-w-6xl mx-auto space-y-12">
+            <div className="bg-background rounded-lg p-8 shadow-md">
+              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
+                Chez [Nom de votre entreprise], nous concevons des bâtiments :
+              </p>
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center">
+                  <Shield className="w-12 h-12 text-primary mx-auto mb-3" />
+                  <p className="font-semibold">Sans ponts thermiques</p>
+                </div>
+                <div className="text-center">
+                  <Building className="w-12 h-12 text-primary mx-auto mb-3" />
+                  <p className="font-semibold">Étanches à l'eau</p>
+                </div>
+                <div className="text-center">
+                  <Users className="w-12 h-12 text-primary mx-auto mb-3" />
+                  <p className="font-semibold">Conformes aux normes européennes</p>
+                </div>
+              </div>
             </div>
-            <div>
-              <h3 className="text-2xl font-semibold mb-6">Nos techniques d'intervention :</h3>
-              <ul className="space-y-4 text-muted-foreground">
-                <li className="flex items-start">
-                  <Shield className="w-5 h-5 text-primary mr-3 mt-1" />
-                  <span>Isolation thermique par l'extérieur (ITE) pour envelopper complètement le bâtiment</span>
-                </li>
-                <li className="flex items-start">
-                  <Shield className="w-5 h-5 text-primary mr-3 mt-1" />
-                  <span>Rupteurs de ponts thermiques aux jonctions critiques</span>
-                </li>
-                <li className="flex items-start">
-                  <Shield className="w-5 h-5 text-primary mr-3 mt-1" />
-                  <span>Étanchéité à l'air pour éviter les infiltrations</span>
-                </li>
-                <li className="flex items-start">
-                  <Shield className="w-5 h-5 text-primary mr-3 mt-1" />
-                  <span>Choix de matériaux performants et durables</span>
-                </li>
-              </ul>
+
+            <div className="bg-blue-50 rounded-lg p-8">
+              <h3 className="text-2xl font-bold mb-6 text-center">Nos matériaux isolants de haute qualité</h3>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="text-center bg-white rounded-lg p-6">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-xl font-bold text-blue-600">EPS</span>
+                  </div>
+                  <h4 className="font-semibold mb-2">Polystyrène expansé</h4>
+                  <p className="text-sm text-muted-foreground">Performance thermique optimale</p>
+                </div>
+                <div className="text-center bg-white rounded-lg p-6">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-xl font-bold text-green-600">XPS</span>
+                  </div>
+                  <h4 className="font-semibold mb-2">Polystyrène extrudé</h4>
+                  <p className="text-sm text-muted-foreground">Résistance à l'humidité</p>
+                </div>
+                <div className="text-center bg-white rounded-lg p-6">
+                  <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-xl font-bold text-purple-600">PU</span>
+                  </div>
+                  <h4 className="font-semibold mb-2">Mousse polyuréthane</h4>
+                  <p className="text-sm text-muted-foreground">Isolation haute performance</p>
+                </div>
+              </div>
+              <p className="text-center text-muted-foreground mt-6">
+                Adaptés aux spécificités de chaque projet.
+              </p>
+            </div>
+
+            <div className="bg-background rounded-lg p-8 shadow-md">
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Users className="w-8 h-8 text-primary" />
+                Une collaboration technique avec votre architecte
+              </h3>
+              <p className="text-lg text-muted-foreground mb-6">
+                Nous ne remplaçons pas votre architecte. Nous travaillons en étroite collaboration avec lui pour vous proposer des solutions sur mesure :
+              </p>
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <span>Isolation optimisée de l'enveloppe thermique</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <span>Conformité aux normes RTCM</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <span>Conseils en ventilation naturelle (châssis, ouvertures, circulation d'air)</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -274,56 +331,99 @@ const Index = () => {
       <section id="projets" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Votre projet</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Que ce soit pour une nouvelle construction ou une rénovation énergétique, nous vous accompagnons.
-            </p>
+            <h2 className="text-4xl font-bold mb-6 flex items-center justify-center gap-3">
+              <Building className="w-10 h-10 text-primary" />
+              Les bénéfices pour vous
+            </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="p-8 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <Home className="w-20 h-20 text-primary mx-auto mb-6" />
-                <h3 className="text-2xl font-semibold mb-4">Nouvelle construction</h3>
-                <p className="text-muted-foreground mb-6">
-                  Conception et réalisation de bâtiments neufs respectant les plus hauts standards d'efficacité énergétique.
-                </p>
-                <ul className="text-left space-y-2 text-muted-foreground mb-6">
-                  <li>• Étude thermique complète</li>
-                  <li>• Conception sans ponts thermiques</li>
-                  <li>• Matériaux haute performance</li>
-                  <li>• Certification énergétique</li>
-                </ul>
+          <div className="max-w-6xl mx-auto space-y-12">
+            <div className="grid md:grid-cols-2 gap-8">
+              <Card className="p-8 hover:shadow-lg transition-shadow bg-green-50 border-green-200">
+                <CardContent className="pt-6">
+                  <div className="text-center mb-6">
+                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Heart className="w-10 h-10 text-green-600" />
+                    </div>
+                    <h3 className="text-3xl font-bold text-green-800">1. Santé</h3>
+                  </div>
+                  <p className="text-lg text-green-700 text-center">
+                    Un intérieur sain, sans humidité ni moisissures, pour protéger vos proches.
+                  </p>
+                </CardContent>
+              </Card>
+              
+              <Card className="p-8 hover:shadow-lg transition-shadow bg-blue-50 border-blue-200">
+                <CardContent className="pt-6">
+                  <div className="text-center mb-6">
+                    <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Zap className="w-10 h-10 text-blue-600" />
+                    </div>
+                    <h3 className="text-3xl font-bold text-blue-800">2. Économie</h3>
+                  </div>
+                  <p className="text-lg text-blue-700 text-center">
+                    Réduction des pertes énergétiques = économies sur vos factures de chauffage.
+                  </p>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="bg-yellow-50 border-l-4 border-yellow-400 rounded-lg p-8">
+              <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-yellow-800">
+                <Lightbulb className="w-8 h-8" />
+                À ne pas négliger : le choix des châssis
+              </h3>
+              <p className="text-lg text-yellow-700">
+                Pour une performance optimale, vos châssis doivent être équipés de double vitrage.
+                Sans cela, l'efficacité globale de votre projet pourrait être compromise.
+              </p>
+            </div>
+
+            <div className="bg-background rounded-lg p-8 shadow-md">
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Users className="w-8 h-8 text-primary" />
+                Pourquoi choisir [Nom de votre entreprise] ?
+              </h3>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white text-sm">✓</span>
+                    </div>
+                    <span className="text-lg">Des solutions techniques durables et économiques</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white text-sm">✓</span>
+                    </div>
+                    <span className="text-lg">Une approche collaborative avec votre architecte</span>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white text-sm">✓</span>
+                    </div>
+                    <span className="text-lg">Une expertise conforme aux standards européens</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                      <span className="text-white text-sm">✓</span>
+                    </div>
+                    <span className="text-lg">Une réponse adaptée à vos besoins spécifiques</span>
+                  </div>
+                </div>
+              </div>
+              <div className="text-center mt-8">
                 <Button 
+                  size="lg"
                   className="bg-primary text-primary-foreground hover:bg-primary/90"
                   onClick={() => scrollToSection('formulaire')}
                 >
-                  Discuter de mon projet
+                  Démarrer mon projet
                 </Button>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-8 text-center hover:shadow-lg transition-shadow">
-              <CardContent className="pt-6">
-                <Wrench className="w-20 h-20 text-primary mx-auto mb-6" />
-                <h3 className="text-2xl font-semibold mb-4">Rénovation énergétique</h3>
-                <p className="text-muted-foreground mb-6">
-                  Amélioration de l'existant avec traitement spécifique des ponts thermiques et amélioration de la performance.
-                </p>
-                <ul className="text-left space-y-2 text-muted-foreground mb-6">
-                  <li>• Diagnostic thermique détaillé</li>
-                  <li>• Isolation performante</li>
-                  <li>• Traitement des ponts thermiques</li>
-                  <li>• Amélioration du confort</li>
-                </ul>
-                <Button 
-                  className="bg-primary text-primary-foreground hover:bg-primary/90"
-                  onClick={() => scrollToSection('formulaire')}
-                >
-                  Rénover mon bâtiment
-                </Button>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>
