@@ -710,7 +710,7 @@ const Index = () => {
           {/* Copyright */}
           <div className="border-t border-primary-foreground/20 pt-6 text-center">
             <p className="text-primary-foreground/60 text-sm">
-              © {new Date().getFullYear()} **EfficaceBâti**. Tous droits réservés.
+              © {new Date().getFullYear()} EfficaceBâti. Tous droits réservés.
             </p>
           </div>
         </div>
