@@ -246,7 +246,7 @@ const Index = () => {
           <div className="max-w-6xl mx-auto space-y-12">
             <div className="bg-background rounded-lg p-8 shadow-md">
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Chez [Nom de votre entreprise], nous concevons des bâtiments :
+                Chez <strong>EfficaceBâti</strong>, nous concevons des bâtiments :
               </p>
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
@@ -382,7 +382,7 @@ const Index = () => {
             <div className="bg-background rounded-lg p-8 shadow-md">
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
                 <Users className="w-8 h-8 text-primary" />
-                Pourquoi choisir [Nom de votre entreprise] ?
+                Pourquoi choisir <strong>EfficaceBâti</strong> ?
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
