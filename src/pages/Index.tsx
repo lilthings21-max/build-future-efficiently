@@ -659,7 +659,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Company Info */}
             <div className="lg:col-span-2">
-              <div className="text-2xl font-bold mb-4">**EfficaceBâti**</div>
+              <div className="text-2xl font-bold mb-4">EfficaceBâti</div>
               <p className="text-primary-foreground/80 mb-4 leading-relaxed">
                 Vers un avenir bâti sur l'efficacité énergétique et la durabilité.
               </p>
@@ -687,8 +687,8 @@ const Index = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-5 h-5 text-primary-foreground/80 flex-shrink-0" />
-                  <a href="mailto:said.harouchi@efficacebati.com" className="text-primary-foreground/80 text-sm hover:text-primary-foreground transition-colors">
-                    said.harouchi@efficacebati.com
+                  <a href="mailto:s.harouchi@efficacebati.com" className="text-primary-foreground/80 text-sm hover:text-primary-foreground transition-colors">
+                    s.harouchi@efficacebati.com
                   </a>
                 </div>
               </div>
