@@ -659,7 +659,7 @@ const Index = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             {/* Company Info */}
             <div className="lg:col-span-2">
-              <div className="text-2xl font-bold mb-4">EfficaceBâti</div>
+              <div className="text-2xl font-bold mb-4">**EfficaceBâti**</div>
               <p className="text-primary-foreground/80 mb-4 leading-relaxed">
                 Vers un avenir bâti sur l'efficacité énergétique et la durabilité.
               </p>
@@ -710,7 +710,7 @@ const Index = () => {
           {/* Copyright */}
           <div className="border-t border-primary-foreground/20 pt-6 text-center">
             <p className="text-primary-foreground/60 text-sm">
-              © {new Date().getFullYear()} EfficaceBâti. Tous droits réservés.
+              © {new Date().getFullYear()} **EfficaceBâti**. Tous droits réservés.
             </p>
           </div>
         </div>
