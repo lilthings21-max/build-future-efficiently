@@ -172,7 +172,7 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center text-white px-6">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Construisons ensemble l'avenir, durable et efficace.
+            Vers un avenir bâti sur l'efficacité énergétique et la durabilité.
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90">
             Spécialistes en construction, rénovation et performance énergétique des bâtiments.
@@ -593,7 +593,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto text-center">
           <div className="text-2xl font-bold mb-4">Efficace Bâti</div>
           <p className="text-primary-foreground/80">
-            Construisons ensemble l'avenir, durable et efficace.
+            Vers un avenir bâti sur l'efficacité énergétique et la durabilité.
           </p>
         </div>
       </footer>
