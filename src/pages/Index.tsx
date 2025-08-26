@@ -27,13 +27,34 @@ const Index = () => {
     },
   });
 
+  // Fetch photos from Supabase
+  const { data: photos, isLoading: photosLoading } = useQuery({
+    queryKey: ['photos'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('photo')
+        .select('*')
+        .order('creation_date', { ascending: false });
+      
+      if (error) throw error;
+      return data;
+    },
+  });
+
+  // Get unique photo types for filters
+  const photoTypes = photos ? ['Tous', ...Array.from(new Set(photos.map(photo => photo.type)))] : ['Tous'];
+  const [selectedPhotoType, setSelectedPhotoType] = useState('Tous');
+  
+  // Filter photos based on selected type
+  const filteredPhotos = photos ? (selectedPhotoType === 'Tous' ? photos : photos.filter(photo => photo.type === selectedPhotoType)) : [];
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       setShowScrollTop(scrollTop > 300);
 
       // Detect active section
-      const sections = ['consequences', 'expertise', 'projets', 'formulaire', 'publications'];
+      const sections = ['consequences', 'expertise', 'projets', 'galerie', 'formulaire', 'publications'];
       const sectionElements = sections.map(id => document.getElementById(id));
       
       for (let i = sectionElements.length - 1; i >= 0; i--) {
@@ -150,6 +171,17 @@ const Index = () => {
                 </div>
               )}
             </div>
+            
+            <button 
+              onClick={() => scrollToSection('galerie')}
+              className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                activeSection === 'galerie' 
+                  ? 'text-yellow-600 bg-yellow-50 shadow-md border border-yellow-200 font-bold' 
+                  : 'text-foreground hover:text-yellow-600 hover:bg-yellow-50/50 hover:shadow-sm'
+              }`}
+            >
+              Galerie
+            </button>
             
             <button 
               onClick={() => scrollToSection('formulaire')}
@@ -442,6 +474,70 @@ const Index = () => {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Section: Galerie */}
+      <section id="galerie" className="py-20 px-6 bg-muted">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Notre Galerie de Projets</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Découvrez nos réalisations à travers cette galerie de projets qui témoigne de notre expertise et de notre savoir-faire.
+            </p>
+          </div>
+
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap justify-center gap-2 mb-12">
+            {photoTypes.map((type) => (
+              <button
+                key={type}
+                onClick={() => setSelectedPhotoType(type)}
+                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
+                  selectedPhotoType === type
+                    ? 'bg-primary text-primary-foreground shadow-md'
+                    : 'bg-background text-muted-foreground hover:bg-primary/10 hover:text-primary'
+                }`}
+              >
+                {type}
+              </button>
+            ))}
+          </div>
+
+          {/* Photos Grid */}
+          {photosLoading ? (
+            <div className="text-center">
+              <p className="text-muted-foreground">Chargement des photos...</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {filteredPhotos.map((photo) => (
+                <div key={photo.id} className="group relative overflow-hidden rounded-lg bg-background shadow-md hover:shadow-xl transition-all duration-300">
+                  <div className="aspect-square overflow-hidden">
+                    <img
+                      src={photo.url}
+                      alt={photo.description || 'Projet de construction'}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
+                  </div>
+                  {photo.description && (
+                    <div className="p-4">
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {photo.description}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {filteredPhotos.length === 0 && !photosLoading && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground text-lg">Aucune photo disponible pour cette catégorie.</p>
+            </div>
+          )}
         </div>
       </section>
 
