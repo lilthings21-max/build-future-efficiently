@@ -4,11 +4,28 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, ArrowUp, Heart, Shield, Home, Zap, FileText, ExternalLink, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useQuery } from "@tanstack/react-query";
 
 const Index = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState('consequences');
   const [showProjectDropdown, setShowProjectDropdown] = useState(false);
+
+  // Fetch publications from Supabase
+  const { data: publications, isLoading } = useQuery({
+    queryKey: ['publications'],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from('publication')
+        .select('*')
+        .order('creation_date', { ascending: false })
+        .limit(3);
+      
+      if (error) throw error;
+      return data;
+    },
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -512,79 +529,50 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer group">
-              <div className="aspect-video bg-muted flex items-center justify-center">
-                <FileText className="w-16 h-16 text-primary" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
-                  Guide des Ponts Thermiques
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Comprendre et identifier les ponts thermiques dans votre bâtiment pour améliorer son efficacité.
-                </p>
-                <div className="flex items-center text-primary text-sm">
-                  <span>Lire la suite</span>
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer group">
-              <div className="aspect-video bg-muted flex items-center justify-center">
-                <Lightbulb className="w-16 h-16 text-primary" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
-                  Isolation Thermique Efficace
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Les meilleures techniques d'isolation pour éliminer les déperditions énergétiques.
-                </p>
-                <div className="flex items-center text-primary text-sm">
-                  <span>Lire la suite</span>
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer group">
-              <div className="aspect-video bg-muted flex items-center justify-center">
-                <Sun className="w-16 h-16 text-primary" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
-                  Énergies Renouvelables
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Intégrer les énergies renouvelables dans votre projet de construction ou rénovation.
-                </p>
-                <div className="flex items-center text-primary text-sm">
-                  <span>Lire la suite</span>
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="hover:shadow-lg transition-shadow cursor-pointer group">
-              <div className="aspect-video bg-muted flex items-center justify-center">
-                <Building className="w-16 h-16 text-primary" />
-              </div>
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
-                  Standards Européens
-                </h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  Respecter les normes européennes d'efficacité énergétique dans vos projets au Maroc.
-                </p>
-                <div className="flex items-center text-primary text-sm">
-                  <span>Lire la suite</span>
-                  <ExternalLink className="w-4 h-4 ml-2" />
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          {isLoading ? (
+            <div className="text-center">
+              <p className="text-muted-foreground">Chargement des publications...</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {publications?.map((publication) => (
+                <Card key={publication.id} className="hover:shadow-lg transition-shadow cursor-pointer group">
+                  <div className="aspect-video overflow-hidden">
+                    {publication.thumbnail ? (
+                      <img 
+                        src={publication.thumbnail} 
+                        alt={publication.titre}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-muted flex items-center justify-center">
+                        <FileText className="w-16 h-16 text-primary" />
+                      </div>
+                    )}
+                  </div>
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+                      {publication.titre}
+                    </h3>
+                    <p className="text-muted-foreground mb-4 line-clamp-3">
+                      {publication.informations}
+                    </p>
+                    {publication.lien && (
+                      <a 
+                        href={publication.lien}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-primary text-sm hover:underline"
+                      >
+                        <span>Lire la suite</span>
+                        <ExternalLink className="w-4 h-4 ml-2" />
+                      </a>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
