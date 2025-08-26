@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, ArrowUp, Heart, Shield, Home, Zap, FileText, ExternalLink, ChevronDown } from "lucide-react";
+import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, ArrowUp, Heart, Shield, Home, Zap, FileText, ExternalLink, ChevronDown, Camera } from "lucide-react";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
@@ -44,6 +44,7 @@ const Index = () => {
   // Get unique photo types for filters
   const photoTypes = photos ? ['Tous', ...Array.from(new Set(photos.map(photo => photo.type)))] : ['Tous'];
   const [selectedPhotoType, setSelectedPhotoType] = useState('Tous');
+  const [showPhotoDropdown, setShowPhotoDropdown] = useState(false);
   
   // Filter photos based on selected type
   const filteredPhotos = photos ? (selectedPhotoType === 'Tous' ? photos : photos.filter(photo => photo.type === selectedPhotoType)) : [];
@@ -66,8 +67,19 @@ const Index = () => {
       }
     };
 
+    const handleClickOutside = (event: MouseEvent) => {
+      const dropdown = document.querySelector('.photo-dropdown-container');
+      if (dropdown && !dropdown.contains(event.target as Node)) {
+        setShowPhotoDropdown(false);
+      }
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -487,21 +499,48 @@ const Index = () => {
             </p>
           </div>
 
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {photoTypes.map((type) => (
+          {/* Filter Navigation Menu */}
+          <div className="flex justify-center mb-12">
+            <div className="relative photo-dropdown-container">
               <button
-                key={type}
-                onClick={() => setSelectedPhotoType(type)}
-                className={`px-6 py-3 rounded-lg font-medium transition-all duration-300 ${
-                  selectedPhotoType === type
-                    ? 'bg-primary text-primary-foreground shadow-md'
-                    : 'bg-background text-muted-foreground hover:bg-primary/10 hover:text-primary'
-                }`}
+                onClick={() => setShowPhotoDropdown(!showPhotoDropdown)}
+                className="flex items-center gap-3 px-8 py-4 bg-background border-2 border-primary/20 rounded-lg font-semibold text-foreground hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 min-w-[200px] justify-between shadow-md"
               >
-                {type}
+                <div className="flex items-center gap-2">
+                  <Camera className="w-5 h-5 text-primary" />
+                  <span>{selectedPhotoType}</span>
+                </div>
+                <ChevronDown className={`w-5 h-5 text-primary transition-transform duration-200 ${showPhotoDropdown ? 'rotate-180' : ''}`} />
               </button>
-            ))}
+              
+              {/* Dropdown Menu */}
+              {showPhotoDropdown && (
+                <div className="absolute top-full left-0 mt-2 w-full bg-background border-2 border-primary/20 rounded-lg shadow-xl z-50 overflow-hidden">
+                  <nav className="py-2">
+                    {photoTypes.map((type, index) => (
+                      <button
+                        key={type}
+                        onClick={() => {
+                          setSelectedPhotoType(type);
+                          setShowPhotoDropdown(false);
+                        }}
+                        className={`w-full text-left px-6 py-3 transition-all duration-200 flex items-center gap-3 ${
+                          selectedPhotoType === type
+                            ? 'bg-primary text-primary-foreground font-semibold'
+                            : 'text-foreground hover:bg-primary/10 hover:text-primary'
+                        } ${index > 0 ? 'border-t border-primary/10' : ''}`}
+                      >
+                        <Camera className="w-4 h-4" />
+                        <span>{type}</span>
+                        {selectedPhotoType === type && (
+                          <div className="ml-auto w-2 h-2 bg-primary-foreground rounded-full"></div>
+                        )}
+                      </button>
+                    ))}
+                  </nav>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Photos Grid */}
