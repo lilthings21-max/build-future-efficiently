@@ -593,27 +593,6 @@ const Index = () => {
               </div>
             </form>
           </Card>
-          
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <MapPin className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-semibold mb-2">Adresse</h3>
-              <p className="text-muted-foreground">
-                26, Avenue Mers Sultan, Apt 3, 1er Étage<br />
-                Casablanca – Maroc
-              </p>
-            </div>
-            <div>
-              <Phone className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-semibold mb-2">Téléphone</h3>
-              <p className="text-muted-foreground">+212 642-444647</p>
-            </div>
-            <div>
-              <Mail className="w-8 h-8 text-primary mx-auto mb-3" />
-              <h3 className="font-semibold mb-2">Email</h3>
-              <p className="text-muted-foreground">said.harouchi@efficacebati.com</p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -675,12 +654,65 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-primary-foreground py-8 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="text-2xl font-bold mb-4">Efficace Bâti</div>
-          <p className="text-primary-foreground/80">
-            Vers un avenir bâti sur l'efficacité énergétique et la durabilité.
-          </p>
+      <footer className="bg-primary text-primary-foreground py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+            {/* Company Info */}
+            <div className="lg:col-span-2">
+              <div className="text-2xl font-bold mb-4">**EfficaceBâti**</div>
+              <p className="text-primary-foreground/80 mb-4 leading-relaxed">
+                Vers un avenir bâti sur l'efficacité énergétique et la durabilité.
+              </p>
+              <p className="text-primary-foreground/70 text-sm">
+                Spécialistes en construction, rénovation et performance énergétique des bâtiments selon les normes européennes.
+              </p>
+            </div>
+            
+            {/* Contact Info */}
+            <div>
+              <h3 className="font-semibold mb-4 text-lg">Contactez-nous</h3>
+              <div className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <MapPin className="w-5 h-5 text-primary-foreground/80 mt-1 flex-shrink-0" />
+                  <div className="text-primary-foreground/80 text-sm">
+                    26, Avenue Mers Sultan, Apt 3, 1er Étage<br />
+                    Casablanca – Maroc
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 text-primary-foreground/80 flex-shrink-0" />
+                  <a href="tel:+212642444647" className="text-primary-foreground/80 text-sm hover:text-primary-foreground transition-colors">
+                    +212 642-444647
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-primary-foreground/80 flex-shrink-0" />
+                  <a href="mailto:said.harouchi@efficacebati.com" className="text-primary-foreground/80 text-sm hover:text-primary-foreground transition-colors">
+                    said.harouchi@efficacebati.com
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+            {/* Services */}
+            <div>
+              <h3 className="font-semibold mb-4 text-lg">Nos Services</h3>
+              <ul className="space-y-2 text-primary-foreground/80 text-sm">
+                <li>Isolation thermique</li>
+                <li>Construction neuve</li>
+                <li>Rénovation énergétique</li>
+                <li>Diagnostic thermique</li>
+                <li>Conseils techniques</li>
+              </ul>
+            </div>
+          </div>
+          
+          {/* Copyright */}
+          <div className="border-t border-primary-foreground/20 pt-6 text-center">
+            <p className="text-primary-foreground/60 text-sm">
+              © {new Date().getFullYear()} **EfficaceBâti**. Tous droits réservés.
+            </p>
+          </div>
         </div>
       </footer>
 
