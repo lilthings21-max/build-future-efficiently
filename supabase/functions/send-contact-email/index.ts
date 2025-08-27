@@ -31,6 +31,7 @@ const handler = async (req: Request): Promise<Response> => {
     const emailResponse = await resend.emails.send({
       from: "EfficaceBâti <onboarding@resend.dev>",
       to: ["s.harouchi@efficacebati.com"],
+      reply_to: email, // So replies go to the form submitter
       subject: `Nouveau projet: ${projectType} - ${name}`,
       html: `
         <div style="max-width: 600px; margin: 0 auto; font-family: Arial, sans-serif;">
@@ -59,6 +60,17 @@ const handler = async (req: Request): Promise<Response> => {
         </div>
       `,
     });
+
+    if (emailResponse.error) {
+      console.error("Resend error:", emailResponse.error);
+      
+      // If it's a domain verification error, return a more specific message
+      if (emailResponse.error.message?.includes("verify a domain")) {
+        throw new Error("Email service requires domain verification. Please contact the administrator.");
+      }
+      
+      throw new Error(emailResponse.error.message || "Failed to send email");
+    }
 
     console.log("Email sent successfully:", emailResponse);
 
