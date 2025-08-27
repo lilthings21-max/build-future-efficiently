@@ -6,11 +6,21 @@ import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, A
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeSection, setActiveSection] = useState('consequences');
   const [showProjectDropdown, setShowProjectDropdown] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    projectType: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   // Fetch publications from Supabase
   const { data: publications, isLoading } = useQuery({
@@ -81,6 +91,50 @@ const Index = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Message envoyé!",
+        description: "Nous avons bien reçu votre demande et vous répondrons rapidement.",
+      });
+
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        projectType: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('Error sending email:', error);
+      toast({
+        title: "Erreur",
+        description: "Une erreur s'est produite lors de l'envoi. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
   return (
@@ -554,41 +608,76 @@ const Index = () => {
           </div>
           
           <Card className="p-8 mb-12">
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block text-sm font-medium mb-2">Nom et Prénom</label>
-                  <Input placeholder="Votre nom complet" />
+                  <Input 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Votre nom complet" 
+                    required
+                  />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-2">Email</label>
-                  <Input type="email" placeholder="votre@email.com" />
+                  <Input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="votre@email.com" 
+                    required
+                  />
                 </div>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">Téléphone</label>
-                <Input type="tel" placeholder="+212 XXX-XXXXXX" />
+                <Input 
+                  type="tel" 
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="+212 XXX-XXXXXX" 
+                  required
+                />
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">Type de projet</label>
-                <select className="w-full p-3 border border-border rounded-md bg-background">
+                <select 
+                  name="projectType"
+                  value={formData.projectType}
+                  onChange={handleInputChange}
+                  className="w-full p-3 border border-border rounded-md bg-background"
+                  required
+                >
                   <option value="">Sélectionnez votre type de projet</option>
-                  <option value="nouvelle-construction">Nouvelle construction</option>
-                  <option value="renovation">Rénovation énergétique</option>
-                  <option value="diagnostic">Diagnostic thermique</option>
-                  <option value="autre">Autre</option>
+                  <option value="Nouvelle construction">Nouvelle construction</option>
+                  <option value="Rénovation énergétique">Rénovation énergétique</option>
+                  <option value="Diagnostic thermique">Diagnostic thermique</option>
+                  <option value="Autre">Autre</option>
                 </select>
               </div>
               <div>
                 <label className="block text-sm font-medium mb-2">Votre projet / Message</label>
                 <Textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
                   placeholder="Décrivez-nous votre projet en détail..."
                   className="min-h-32"
+                  required
                 />
               </div>
               <div className="text-center">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  Envoyer ma demande
+                <Button 
+                  type="submit"
+                  size="lg" 
+                  className="bg-primary text-primary-foreground hover:bg-primary/90"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Envoi en cours..." : "Envoyer ma demande"}
                 </Button>
               </div>
             </form>
