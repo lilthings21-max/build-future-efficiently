@@ -141,13 +141,31 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Logo Section */}
-      <div className="bg-background py-8 text-center border-b border-border">
+      <aside className="bg-background py-8 text-center border-b border-border">
         <img 
           src="/lovable-uploads/a71b6835-bdb9-445b-af43-6b267b86e960.png" 
-          alt="Efficace Bâti Logo" 
+          alt="EfficaceBâti - Logo de l'entreprise spécialisée en isolation thermique et ponts thermiques" 
           className="h-20 w-auto mx-auto"
+          loading="eager"
         />
-      </div>
+      </aside>
+
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="bg-muted py-3 px-6">
+        <div className="max-w-7xl mx-auto">
+          <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
+            <li>
+              <a href="/" className="hover:text-primary transition-colors">
+                Accueil
+              </a>
+            </li>
+            <li>/</li>
+            <li className="text-foreground font-medium">
+              Isolation Thermique & Ponts Thermiques
+            </li>
+          </ol>
+        </div>
+      </nav>
 
       {/* Sticky Navigation */}
       <nav className="sticky top-0 z-50 bg-gradient-to-r from-background/95 to-background/90 backdrop-blur-md border-b-2 border-primary/20 shadow-lg">
@@ -264,7 +282,7 @@ const Index = () => {
       </nav>
 
       {/* Hero Section with Background */}
-      <section className="relative h-screen flex items-center justify-center">
+      <header className="relative h-screen flex items-center justify-center">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
@@ -276,21 +294,23 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center text-white px-6">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
-            Vers un avenir bâti sur l'efficacité énergétique et la durabilité.
+            EfficaceBâti : Experts en Isolation Thermique et Traitement des Ponts Thermiques
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90">
-            Spécialistes en construction, rénovation et performance énergétique des bâtiments.
+            Spécialistes en isolation thermique par l'extérieur, rénovation énergétique et amélioration de la performance énergétique des bâtiments en France.
           </p>
           <Button 
             size="lg" 
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
             onClick={() => scrollToSection('formulaire')}
+            aria-label="Contactez EfficaceBâti pour un devis gratuit"
           >
-            Contactez-nous
+            Devis Gratuit - Contactez-nous
           </Button>
         </div>
-      </section>
+      </header>
 
+      <main role="main">
       {/* Section: Les conséquences du Pont Thermiques sur la santé */}
       <section id="consequences" className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
@@ -632,12 +652,13 @@ const Index = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredPhotos.map((photo) => (
-                <div key={photo.id} className="group relative overflow-hidden rounded-lg bg-background shadow-md hover:shadow-xl transition-all duration-300">
+                <article key={photo.id} className="group relative overflow-hidden rounded-lg bg-background shadow-md hover:shadow-xl transition-all duration-300">
                   <div className="aspect-square overflow-hidden">
                     <img
                       src={photo.url}
-                      alt={photo.description || 'Projet de construction'}
+                      alt={`Projet EfficaceBâti - ${photo.description || 'Isolation thermique et efficacité énergétique'} - ${photo.type}`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
                   </div>
@@ -648,7 +669,7 @@ const Index = () => {
                       </p>
                     </div>
                   )}
-                </div>
+                </article>
               ))}
             </div>
           )}
@@ -805,6 +826,7 @@ const Index = () => {
           )}
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-12 px-6">

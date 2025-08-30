@@ -1,14 +1,29 @@
+User-agent: *
+Allow: /
+
+# XML Sitemap
+Sitemap: https://efficacebati.com/sitemap.xml
+
+# Crawl delay for respectful crawling
+Crawl-delay: 1
+
+# Specific crawl rules for EfficaceBâti
+Disallow: /admin/
+Disallow: /private/
+Allow: /public/
+
+# Social media bots
+User-agent: facebookexternalhit/*
+Allow: /
+
+User-agent: Twitterbot/*
+Allow: /
+
+User-agent: LinkedInBot/*
+Allow: /
+
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: *
 Allow: /
