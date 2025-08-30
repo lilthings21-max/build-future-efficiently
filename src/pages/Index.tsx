@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
-import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, ArrowUp, Heart, Shield, Home, Zap, FileText, ExternalLink, ChevronDown, Camera } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, ArrowUp, Heart, Shield, Home, Zap, FileText, ExternalLink, ChevronDown, Camera, Expand } from "lucide-react";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
@@ -339,38 +340,60 @@ const Index = () => {
                 Exemples de ponts thermiques et leurs conséquences
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-shadow">
-                  <img 
-                    src="https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/SectionConsequence_image2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9TZWN0aW9uQ29uc2VxdWVuY2VfaW1hZ2UyLmpwZyIsImlhdCI6MTc1NjU2Njk5MSwiZXhwIjoyMDcxOTI2OTkxfQ.eavd0eaDPbSaunZT0WaepZBDCUE7bAplCCztSj8gBGg" 
-                    alt="Conséquences des ponts thermiques - Image 2"
-                    className="w-full h-48 object-cover rounded-md mb-3"
-                  />
-                  <p className="text-sm text-muted-foreground text-center">
-                    Impact des ponts thermiques sur la structure
-                  </p>
-                </div>
-                
-                <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-shadow">
-                  <img 
-                    src="https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/PontThermique_SectionConsequences.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Qb250VGhlcm1pcXVlX1NlY3Rpb25Db25zZXF1ZW5jZXMucG5nIiwiaWF0IjoxNzU2NTY3MDI0LCJleHAiOjIwNzE5MjcwMjR9.UkNlJfmLJY4EvwagXXQHXE4mtpEOU8KFKrrMrEmpFK0" 
-                    alt="Pont thermique - Section conséquences"
-                    className="w-full h-48 object-cover rounded-md mb-3"
-                  />
-                  <p className="text-sm text-muted-foreground text-center">
-                    Analyse thermique des ponts thermiques
-                  </p>
-                </div>
-                
-                <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-shadow">
-                  <img 
-                    src="https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/PontThermique_aotherOne.PNG?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Qb250VGhlcm1pcXVlX2FvdGhlck9uZS5QTkciLCJpYXQiOjE3NTY1NjcwNDUsImV4cCI6MjA3MTkyNzA0NX0.vwNE10ceF1f9QmHbafjS8tXsu0AMZL7hzC0G5cNuF_k" 
-                    alt="Pont thermique - Autre exemple"
-                    className="w-full h-48 object-cover rounded-md mb-3"
-                  />
-                  <p className="text-sm text-muted-foreground text-center">
-                    Exemple supplémentaire de pont thermique
-                  </p>
-                </div>
+                {[
+                  {
+                    src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/SectionConsequence_image2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9TZWN0aW9uQ29uc2VxdWVuY2VfaW1hZ2UyLmpwZyIsImlhdCI6MTc1NjU2Njk5MSwiZXhwIjoyMDcxOTI2OTkxfQ.eavd0eaDPbSaunZT0WaepZBDCUE7bAplCCztSj8gBGg",
+                    alt: "Conséquences des ponts thermiques - Image 2",
+                    description: "Impact des ponts thermiques sur la structure"
+                  },
+                  {
+                    src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/PontThermique_SectionConsequences.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Qb250VGhlcm1pcXVlX1NlY3Rpb25Db25zZXF1ZW5jZXMucG5nIiwiaWF0IjoxNzU2NTY3MDI0LCJleHAiOjIwNzE5MjcwMjR9.UkNlJfmLJY4EvwagXXQHXE4mtpEOU8KFKrrMrEmpFK0",
+                    alt: "Pont thermique - Section conséquences",
+                    description: "Analyse thermique des ponts thermiques"
+                  },
+                  {
+                    src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/PontThermique_aotherOne.PNG?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Qb250VGhlcm1pcXVlX2FvdGhlck9uZS5QTkciLCJpYXQiOjE3NTY1NjcwNDUsImV4cCI6MjA3MTkyNzA0NX0.vwNE10ceF1f9QmHbafjS8tXsu0AMZL7hzC0G5cNuF_k",
+                    alt: "Pont thermique - Autre exemple", 
+                    description: "Exemple supplémentaire de pont thermique"
+                  }
+                ].map((image, index) => (
+                  <Dialog key={index}>
+                    <DialogTrigger asChild>
+                      <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-all duration-300 cursor-pointer group">
+                        <div className="relative overflow-hidden rounded-md">
+                          <img 
+                            src={image.src}
+                            alt={image.alt}
+                            className="w-full h-48 object-cover mb-3 transition-transform duration-300 group-hover:scale-105"
+                          />
+                          {/* Hover overlay */}
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                            <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-white font-semibold">
+                              <Expand className="w-5 h-5" />
+                              Agrandir
+                            </div>
+                          </div>
+                        </div>
+                        <p className="text-sm text-muted-foreground text-center">
+                          {image.description}
+                        </p>
+                      </div>
+                    </DialogTrigger>
+                    <DialogContent className="max-w-4xl max-h-[90vh] p-0">
+                      <div className="relative">
+                        <img 
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-auto max-h-[80vh] object-contain"
+                        />
+                        <div className="p-6">
+                          <h3 className="text-lg font-semibold mb-2">{image.alt}</h3>
+                          <p className="text-muted-foreground">{image.description}</p>
+                        </div>
+                      </div>
+                    </DialogContent>
+                  </Dialog>
+                ))}
               </div>
             </div>
           </div>
