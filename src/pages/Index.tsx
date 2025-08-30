@@ -150,22 +150,6 @@ const Index = () => {
         />
       </aside>
 
-      {/* Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="bg-muted py-3 px-6">
-        <div className="max-w-7xl mx-auto">
-          <ol className="flex items-center space-x-2 text-sm text-muted-foreground">
-            <li>
-              <a href="/" className="hover:text-primary transition-colors">
-                Accueil
-              </a>
-            </li>
-            <li>/</li>
-            <li className="text-foreground font-medium">
-              Isolation Thermique & Ponts Thermiques
-            </li>
-          </ol>
-        </div>
-      </nav>
 
       {/* Sticky Navigation */}
       <nav className="sticky top-0 z-50 bg-gradient-to-r from-background/95 to-background/90 backdrop-blur-md border-b-2 border-primary/20 shadow-lg">
