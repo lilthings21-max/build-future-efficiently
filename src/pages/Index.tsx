@@ -341,7 +341,7 @@ const Index = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-shadow">
                   <img 
-                    src="/public/SectionConsequence_image2.jpg" 
+                    src="https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/SectionConsequence_image2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9TZWN0aW9uQ29uc2VxdWVuY2VfaW1hZ2UyLmpwZyIsImlhdCI6MTc1NjU2Njk5MSwiZXhwIjoyMDcxOTI2OTkxfQ.eavd0eaDPbSaunZT0WaepZBDCUE7bAplCCztSj8gBGg" 
                     alt="Conséquences des ponts thermiques - Image 2"
                     className="w-full h-48 object-cover rounded-md mb-3"
                   />
@@ -352,7 +352,7 @@ const Index = () => {
                 
                 <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-shadow">
                   <img 
-                    src="/public/PontThermique_SectionConsequences.png" 
+                    src="https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/PontThermique_SectionConsequences.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Qb250VGhlcm1pcXVlX1NlY3Rpb25Db25zZXF1ZW5jZXMucG5nIiwiaWF0IjoxNzU2NTY3MDI0LCJleHAiOjIwNzE5MjcwMjR9.UkNlJfmLJY4EvwagXXQHXE4mtpEOU8KFKrrMrEmpFK0" 
                     alt="Pont thermique - Section conséquences"
                     className="w-full h-48 object-cover rounded-md mb-3"
                   />
@@ -363,7 +363,7 @@ const Index = () => {
                 
                 <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-shadow">
                   <img 
-                    src="/public/PontThermique_aotherOne.PNG" 
+                    src="https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/PontThermique_aotherOne.PNG?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Qb250VGhlcm1pcXVlX2FvdGhlck9uZS5QTkciLCJpYXQiOjE3NTY1NjcwNDUsImV4cCI6MjA3MTkyNzA0NX0.vwNE10ceF1f9QmHbafjS8tXsu0AMZL7hzC0G5cNuF_k" 
                     alt="Pont thermique - Autre exemple"
                     className="w-full h-48 object-cover rounded-md mb-3"
                   />
