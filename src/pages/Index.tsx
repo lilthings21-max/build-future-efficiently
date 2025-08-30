@@ -145,7 +145,7 @@ const Index = () => {
         <img 
           src="/lovable-uploads/a71b6835-bdb9-445b-af43-6b267b86e960.png" 
           alt="EfficaceBâti - Logo de l'entreprise spécialisée en isolation thermique et ponts thermiques" 
-          className="h-20 w-auto mx-auto"
+          className="h-40 w-auto mx-auto"
           loading="eager"
         />
       </aside>
@@ -308,10 +308,10 @@ const Index = () => {
           <div className="max-w-4xl mx-auto space-y-8">
             <div className="bg-background rounded-lg p-8 shadow-md">
               <p className="text-lg text-muted-foreground leading-relaxed">
-                La condensation et les moisissures ne sont pas de simples désagréments visuels. Elles constituent un risque réel pour la santé, favorisant l'apparition de maladies respiratoires telles que l'asthme, en particulier chez les enfants et les personnes âgées.
+                La condensation et les moisissures ne sont pas de simples désagréments visuels. Elles constituent un risque réel pour la santé, favorisant l'apparition de maladies respiratoires telles que l'asthme, en particulier chez les personnes fragiles, les enfants et les personnes âgées.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed mt-4">
-                Ces problèmes sont souvent causés par une isolation thermique défaillante, générant des ponts thermiques.
+                Ces problèmes sont souvent causés par une isolation thermique absente ou défaillante, générant des ponts thermiques.
               </p>
             </div>
 
@@ -347,18 +347,18 @@ const Index = () => {
                 {[
                   {
                     src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/SectionConsequence_image2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9TZWN0aW9uQ29uc2VxdWVuY2VfaW1hZ2UyLmpwZyIsImlhdCI6MTc1NjU2Njk5MSwiZXhwIjoyMDcxOTI2OTkxfQ.eavd0eaDPbSaunZT0WaepZBDCUE7bAplCCztSj8gBGg",
-                    alt: "Conséquences des ponts thermiques - Image 2",
-                    description: "Impact des ponts thermiques sur la structure"
+                    alt: "Conséquences visibles de ponts thermiques",
+                    description: "Conséquences visibles de ponts thermiques"
                   },
                   {
                     src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/PontThermique_SectionConsequences.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Qb250VGhlcm1pcXVlX1NlY3Rpb25Db25zZXF1ZW5jZXMucG5nIiwiaWF0IjoxNzU2NTY3MDI0LCJleHAiOjIwNzE5MjcwMjR9.UkNlJfmLJY4EvwagXXQHXE4mtpEOU8KFKrrMrEmpFK0",
-                    alt: "Pont thermique - Section conséquences",
-                    description: "Analyse thermique des ponts thermiques"
+                    alt: "Zones de ponts thermiques",
+                    description: "Zones de ponts thermiques"
                   },
                   {
                     src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/PontThermique_aotherOne.PNG?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Qb250VGhlcm1pcXVlX2FvdGhlck9uZS5QTkciLCJpYXQiOjE3NTY1NjcwNDUsImV4cCI6MjA3MTkyNzA0NX0.vwNE10ceF1f9QmHbafjS8tXsu0AMZL7hzC0G5cNuF_k",
-                    alt: "Pont thermique - Autre exemple", 
-                    description: "Exemple supplémentaire de pont thermique"
+                    alt: "Visualisation sur un plan de ponts thermiques des colonnes", 
+                    description: "Visualisation sur un plan de ponts thermiques des colonnes"
                   }
                 ].map((image, index) => (
                   <Dialog key={index}>
@@ -391,8 +391,7 @@ const Index = () => {
                           className="w-full h-auto max-h-[80vh] object-contain"
                         />
                         <div className="p-6">
-                          <h3 className="text-lg font-semibold mb-2">{image.alt}</h3>
-                          <p className="text-muted-foreground">{image.description}</p>
+                          <h3 className="text-xl font-bold mb-2">{image.description}</h3>
                         </div>
                       </div>
                     </DialogContent>
@@ -410,7 +409,7 @@ const Index = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6 flex items-center justify-center gap-3">
               <Wrench className="w-10 h-10 text-primary" />
-              Notre solution : une isolation thermique performante par l'extérieur
+              La solution : une isolation thermique performante par l'extérieur
             </h2>
           </div>
           
