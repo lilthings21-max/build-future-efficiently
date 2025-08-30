@@ -332,6 +332,47 @@ const Index = () => {
                 </div>
               </div>
             </div>
+
+            {/* Image Gallery for Consequences */}
+            <div className="mt-12">
+              <h3 className="text-2xl font-bold text-center mb-8 text-foreground">
+                Exemples de ponts thermiques et leurs conséquences
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-shadow">
+                  <img 
+                    src="/public/SectionConsequence_image2.jpg" 
+                    alt="Conséquences des ponts thermiques - Image 2"
+                    className="w-full h-48 object-cover rounded-md mb-3"
+                  />
+                  <p className="text-sm text-muted-foreground text-center">
+                    Impact des ponts thermiques sur la structure
+                  </p>
+                </div>
+                
+                <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-shadow">
+                  <img 
+                    src="/public/PontThermique_SectionConsequences.png" 
+                    alt="Pont thermique - Section conséquences"
+                    className="w-full h-48 object-cover rounded-md mb-3"
+                  />
+                  <p className="text-sm text-muted-foreground text-center">
+                    Analyse thermique des ponts thermiques
+                  </p>
+                </div>
+                
+                <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-shadow">
+                  <img 
+                    src="/public/PontThermique_aotherOne.PNG" 
+                    alt="Pont thermique - Autre exemple"
+                    className="w-full h-48 object-cover rounded-md mb-3"
+                  />
+                  <p className="text-sm text-muted-foreground text-center">
+                    Exemple supplémentaire de pont thermique
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
