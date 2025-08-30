@@ -294,10 +294,10 @@ const Index = () => {
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center text-white px-6">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
-            EfficaceBâti : Experts en Isolation Thermique et Traitement des Ponts Thermiques
+            Vers un avenir bâti sur l'efficacité énergétique et la durabilité.
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto leading-relaxed">
-            Spécialistes en isolation thermique par l'extérieur, rénovation énergétique et amélioration de la performance énergétique des bâtiments en France.
+            Nous construisons des bâtiments sans ponts thermiques ou rénovés avec efficacité énergétique optimale.
           </p>
           <Button 
             size="lg" 
