@@ -108,15 +108,27 @@ const Index = () => {
     setIsSubmitting(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('send-contact-email', {
+      // Store form data in project_requests table
+      const { error: dbError } = await (supabase as any)
+        .from('project_requests')
+        .insert({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          project_type: formData.projectType,
+          message: formData.message
+        });
+
+      if (dbError) throw dbError;
+
+      // Also send email via edge function
+      await supabase.functions.invoke('send-contact-email', {
         body: formData
       });
 
-      if (error) throw error;
-
       toast({
-        title: "Message envoyé!",
-        description: "Nous avons bien reçu votre demande et vous répondrons rapidement.",
+        title: "Demande envoyée avec succès!",
+        description: "Votre demande a été enregistrée. Nous vous recontacterons très prochainement.",
       });
 
       // Reset form
@@ -128,7 +140,7 @@ const Index = () => {
         message: ''
       });
     } catch (error) {
-      console.error('Error sending email:', error);
+      console.error('Error submitting form:', error);
       toast({
         title: "Erreur",
         description: "Une erreur s'est produite lors de l'envoi. Veuillez réessayer.",
