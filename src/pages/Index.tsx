@@ -611,7 +611,7 @@ const Index = () => {
             {/* LaSolution Image */}
             <div className="mt-16 text-center animate-fade-in">
               <img 
-                src="https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/public/Photos/LaSolution.jpg"
+                src="https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/LaSolution.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9MYVNvbHV0aW9uLmpwZyIsImlhdCI6MTc1NjY3MjAyNywiZXhwIjoyMDcyMDMyMDI3fQ.fR2T92j9ik0XLIqIaPj327Kr0aiKdQ8geyzGaUcBODU"
                 alt="La solution EfficaceBâti - Isolation thermique performante par l'extérieur"
                 className="mx-auto max-w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
                 loading="lazy"
