@@ -157,7 +157,7 @@ const Index = () => {
         <img 
           src="/lovable-uploads/a71b6835-bdb9-445b-af43-6b267b86e960.png" 
           alt="EfficaceBâti - Logo de l'entreprise spécialisée en isolation thermique et ponts thermiques" 
-          className="h-40 w-auto mx-auto"
+          className="h-40 w-auto mx-auto animate-fade-in hover:scale-105 transition-transform duration-300"
           loading="eager"
         />
       </aside>
@@ -278,9 +278,9 @@ const Index = () => {
       </nav>
 
       {/* Hero Section with Background */}
-      <header className="relative h-screen flex items-center justify-center">
+      <header className="relative h-screen flex items-center justify-center overflow-hidden">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat animate-scale-in"
           style={{
             backgroundImage: `url('/lovable-uploads/6f06b044-aa63-4148-898a-06d318d24289.png')`,
             filter: 'blur(2px)',
@@ -289,15 +289,15 @@ const Index = () => {
         ></div>
         <div className="absolute inset-0 bg-black/50"></div>
         <div className="relative z-10 text-center text-white px-6">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white leading-tight animate-fade-in">
             Vers un avenir bâti sur l'efficacité énergétique et la durabilité.
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-4xl mx-auto leading-relaxed animate-fade-in">
             Nous construisons des bâtiments sans ponts thermiques ou rénovés avec efficacité énergétique optimale.
           </p>
           <Button 
             size="lg" 
-            className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            className="bg-destructive text-destructive-foreground hover:bg-destructive/90 animate-fade-in hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
             onClick={() => scrollToSection('formulaire')}
             aria-label="Contactez EfficaceBâti pour un devis gratuit"
           >
@@ -308,17 +308,17 @@ const Index = () => {
 
       <main role="main">
       {/* Section: Les conséquences du Pont Thermiques sur la santé */}
-      <section id="consequences" className="py-20 px-6">
+      <section id="consequences" className="py-20 px-6 animate-fade-in">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 flex items-center justify-center gap-3">
-              <Home className="w-10 h-10 text-primary" />
+            <h2 className="text-4xl font-bold mb-6 flex items-center justify-center gap-3 animate-fade-in">
+              <Home className="w-10 h-10 text-primary animate-scale-in" />
               Condensation et moisissures : un enjeu sanitaire et énergétique
             </h2>
           </div>
           
           <div className="max-w-4xl mx-auto space-y-8">
-            <div className="bg-background rounded-lg p-8 shadow-md">
+            <div className="bg-background rounded-lg p-8 shadow-md hover:shadow-lg transition-all duration-300 animate-fade-in hover:scale-105">
               <p className="text-lg text-muted-foreground leading-relaxed">
                 La condensation et les moisissures ne sont pas de simples désagréments visuels. Elles constituent un risque réel pour la santé, favorisant l'apparition de maladies respiratoires telles que l'asthme, en particulier chez les personnes fragiles, les enfants et les personnes âgées.
               </p>
@@ -327,9 +327,9 @@ const Index = () => {
               </p>
             </div>
 
-            <div className="bg-orange-50 border-l-4 border-orange-400 rounded-lg p-8">
+            <div className="bg-orange-50 border-l-4 border-orange-400 rounded-lg p-8 hover:shadow-lg transition-all duration-300 animate-fade-in hover:scale-105">
               <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 text-orange-800">
-                <Shield className="w-8 h-8" />
+                <Shield className="w-8 h-8 animate-pulse" />
                 Les ponts thermiques : deux conséquences majeures
               </h3>
               <div className="grid md:grid-cols-2 gap-6">
@@ -375,12 +375,12 @@ const Index = () => {
                 ].map((image, index) => (
                   <Dialog key={index}>
                     <DialogTrigger asChild>
-                      <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-all duration-300 cursor-pointer group">
+                      <div className="bg-background rounded-lg p-4 shadow-lg border border-border hover:shadow-xl transition-all duration-300 cursor-pointer group animate-fade-in hover:scale-105">
                         <div className="relative overflow-hidden rounded-md">
                           <img 
                             src={image.src}
                             alt={image.alt}
-                            className="w-full h-48 object-cover mb-3 transition-transform duration-300 group-hover:scale-105"
+                            className="w-full h-48 object-cover mb-3 transition-transform duration-500 group-hover:scale-110"
                           />
                           {/* Hover overlay */}
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
