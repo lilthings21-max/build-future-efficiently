@@ -607,6 +607,16 @@ const Index = () => {
                 </Button>
               </div>
             </div>
+            
+            {/* LaSolution Image */}
+            <div className="mt-16 text-center animate-fade-in">
+              <img 
+                src="https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/public/Photos/LaSolution.jpg"
+                alt="La solution EfficaceBâti - Isolation thermique performante par l'extérieur"
+                className="mx-auto max-w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </section>
