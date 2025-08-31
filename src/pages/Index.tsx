@@ -21,6 +21,7 @@ const Index = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const { toast } = useToast();
 
   // Fetch publications from Supabase
@@ -647,24 +648,48 @@ const Index = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {filteredPhotos.map((photo) => (
-                <article key={photo.id} className="group relative overflow-hidden rounded-lg bg-background shadow-md hover:shadow-xl transition-all duration-300">
-                  <div className="aspect-square overflow-hidden">
-                    <img
-                      src={photo.url}
-                      alt={`Projet EfficaceBâti - ${photo.description || 'Isolation thermique et efficacité énergétique'} - ${photo.type}`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
-                  </div>
-                  {photo.description && (
-                    <div className="p-4">
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {photo.description}
-                      </p>
+                <Dialog key={photo.id}>
+                  <DialogTrigger asChild>
+                    <article className="group relative overflow-hidden rounded-lg bg-background shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer">
+                      <div className="aspect-square overflow-hidden">
+                        <img
+                          src={photo.url}
+                          alt={`Projet EfficaceBâti - ${photo.description || 'Isolation thermique et efficacité énergétique'} - ${photo.type}`}
+                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 text-white font-semibold">
+                            <Expand className="w-6 h-6" />
+                            Agrandir
+                          </div>
+                        </div>
+                      </div>
+                      {photo.description && (
+                        <div className="p-4">
+                          <p className="text-sm text-muted-foreground leading-relaxed">
+                            {photo.description}
+                          </p>
+                        </div>
+                      )}
+                    </article>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-5xl max-h-[90vh] p-0">
+                    <div className="relative">
+                      <img 
+                        src={photo.url}
+                        alt={`Projet EfficaceBâti - ${photo.description || 'Isolation thermique et efficacité énergétique'} - ${photo.type}`}
+                        className="w-full h-auto max-h-[80vh] object-contain"
+                      />
+                      {photo.description && (
+                        <div className="p-6">
+                          <h3 className="text-xl font-bold mb-2">{photo.description}</h3>
+                          <p className="text-muted-foreground">{photo.type}</p>
+                        </div>
+                      )}
                     </div>
-                  )}
-                </article>
+                  </DialogContent>
+                </Dialog>
               ))}
             </div>
           )}
