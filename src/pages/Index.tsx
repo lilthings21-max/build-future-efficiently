@@ -359,7 +359,7 @@ const Index = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                 {[
                   {
-                    src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/SectionConsequence_image2.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9TZWN0aW9uQ29uc2VxdWVuY2VfaW1hZ2UyLmpwZyIsImlhdCI6MTc1NjU2Njk5MSwiZXhwIjoyMDcxOTI2OTkxfQ.eavd0eaDPbSaunZT0WaepZBDCUE7bAplCCztSj8gBGg",
+                    src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/Consequences_Visibles_de_Ponts_Thermiques.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Db25zZXF1ZW5jZXNfVmlzaWJsZXNfZGVfUG9udHNfVGhlcm1pcXVlcy5qcGciLCJpYXQiOjE3NTY3Mzc4MTQsImV4cCI6MjA3MjA5NzgxNH0.FzpbEBNfZmgnY67Ew5VKyrs47gCPCv9UVzudaX3k28I",
                     alt: "Conséquences visibles de ponts thermiques",
                     description: "Conséquences visibles de ponts thermiques"
                   },
