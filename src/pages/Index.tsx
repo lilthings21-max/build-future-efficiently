@@ -364,7 +364,7 @@ const Index = () => {
                     description: "Conséquences visibles de ponts thermiques"
                   },
                   {
-                    src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/PontThermique_SectionConsequences.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Qb250VGhlcm1pcXVlX1NlY3Rpb25Db25zZXF1ZW5jZXMucG5nIiwiaWF0IjoxNzU2NTY3MDI0LCJleHAiOjIwNzE5MjcwMjR9.UkNlJfmLJY4EvwagXXQHXE4mtpEOU8KFKrrMrEmpFK0",
+                    src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/Zones_de_Ponts_Thermiques.png?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9ab25lc19kZV9Qb250c19UaGVybWlxdWVzLnBuZyIsImlhdCI6MTc1NjczNzg3OCwiZXhwIjoyMDcyMDk3ODc4fQ.jFvZQTInlRJEtOZpd9fN64MQI-xgjeTdUGiR38k2zNg",
                     alt: "Zones de ponts thermiques",
                     description: "Zones de ponts thermiques"
                   },
