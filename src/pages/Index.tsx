@@ -434,7 +434,7 @@ const Index = () => {
           <div className="max-w-6xl mx-auto space-y-12">
             <div className="bg-background rounded-lg p-8 shadow-md">
               <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Chez <strong>EfficaceBâti</strong>, nous concevons des bâtiments :
+                Chez <strong>EfficaceBâti</strong>, nous réalisons des bâtiments :
               </p>
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
