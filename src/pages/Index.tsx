@@ -372,6 +372,11 @@ const Index = () => {
                     src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/PontThermique_aotherOne.PNG?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Qb250VGhlcm1pcXVlX2FvdGhlck9uZS5QTkciLCJpYXQiOjE3NTY1NjcwNDUsImV4cCI6MjA3MTkyNzA0NX0.vwNE10ceF1f9QmHbafjS8tXsu0AMZL7hzC0G5cNuF_k",
                     alt: "Visualisation sur un plan de ponts thermiques des colonnes", 
                     description: "Visualisation sur un plan de ponts thermiques des colonnes"
+                  },
+                  {
+                    src: "https://iogslsmqccnuozqavvua.supabase.co/storage/v1/object/sign/Photos/photoos/Ponts_Thermiques.jpg?token=eyJraWQiOiJzdG9yYWdlLXVybC1zaWduaW5nLWtleV80NDY5ZjIxNS0xYzQ0LTQ2ZDItOTIyOS0wNzM2N2U2OTBiMGMiLCJhbGciOiJIUzI1NiJ9.eyJ1cmwiOiJQaG90b3MvcGhvdG9vcy9Qb250c19UaGVybWlxdWVzLmpwZyIsImlhdCI6MTc1NjczNDE5NCwiZXhwIjoyMDcyMDk0MTk0fQ.i0hU-d3L9GzkYLo8r-dXBook1fQB0r7RfSaKD3TptBc",
+                    alt: "Exemple de ponts thermiques dans un bâtiment",
+                    description: "Exemple de ponts thermiques dans un bâtiment"
                   }
                 ].map((image, index) => (
                   <Dialog key={index}>
