@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, ArrowUp, Heart, Shield, Home, Zap, FileText, ExternalLink, ChevronDown, Camera, Expand } from "lucide-react";
+import { Building, Wrench, Sun, Lightbulb, Users, Hammer, Phone, Mail, MapPin, ArrowUp, Heart, Shield, Home, Zap, FileText, ExternalLink, ChevronDown, Camera, Expand, Linkedin } from "lucide-react";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
@@ -899,6 +899,12 @@ const Index = () => {
                   <Mail className="w-5 h-5 text-primary-foreground/80 flex-shrink-0" />
                   <a href="mailto:s.harouchi@efficacebati.com" className="text-primary-foreground/80 text-sm hover:text-primary-foreground transition-colors">
                     s.harouchi@efficacebati.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Linkedin className="w-5 h-5 text-primary-foreground/80 flex-shrink-0" />
+                  <a href="https://www.linkedin.com/company/108492196/admin/settings/" target="_blank" rel="noopener noreferrer" className="text-primary-foreground/80 text-sm hover:text-primary-foreground transition-colors">
+                    LinkedIn
                   </a>
                 </div>
               </div>
