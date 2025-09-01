@@ -775,7 +775,6 @@ const Index = () => {
                   <option value="">Sélectionnez votre type de projet</option>
                   <option value="Nouvelle construction">Nouvelle construction</option>
                   <option value="Rénovation énergétique">Rénovation énergétique</option>
-                  <option value="Diagnostic thermique">Diagnostic thermique</option>
                   <option value="Autre">Autre</option>
                 </select>
               </div>
