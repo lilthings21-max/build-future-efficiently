@@ -873,7 +873,7 @@ const Index = () => {
                 Vers un avenir bâti sur l'efficacité énergétique et la durabilité.
               </p>
               <p className="text-primary-foreground/70 text-sm">
-                Spécialistes en construction, rénovation et performance énergétique des bâtiments selon les normes européennes.
+                Spécialistes en construction, rénovation et performance énergétique des bâtiments selon les normes européennes et la RTCM.
               </p>
             </div>
             
