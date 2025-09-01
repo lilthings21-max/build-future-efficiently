@@ -914,11 +914,11 @@ const Index = () => {
             <div>
               <h3 className="font-semibold mb-4 text-lg">Nos Services</h3>
               <ul className="space-y-2 text-primary-foreground/80 text-sm">
-                <li>Isolation thermique</li>
-                <li>Construction neuve</li>
+                <li>Étude, conseil et suivi technique</li>
+                <li>Constructions neuves et rénovations</li>
                 <li>Rénovation énergétique</li>
-                <li>Diagnostic thermique</li>
-                <li>Conseils techniques</li>
+                <li>Optimisation des besoins en énergies renouvelables</li>
+                <li>Nous garantissons nos travaux</li>
               </ul>
             </div>
           </div>
